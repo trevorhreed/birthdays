@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      html{
+        margin: 0;
+        padding: 0;
+      }
+      html,body{
+        background: #357;
+        color: #f84;
+        height: 100%;
+      }
+      body{
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1{
+        text-align: center;
+        font-size: 20vh;
+      }
+      a{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Happy Birthday Desmond!</h1>
+    <a href="javascript:void(0)">Replay</a>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script type="module">
+      console.clear()
+
+      const speak = await new Promise((resolve, reject) => {
+        const synth = window.speechSynthesis
+        let voices
+        const speak = (text) => {
+          const utterance = new SpeechSynthesisUtterance(text)
+          utterance.voice = voices[0]
+          utterance.pitch = 1
+          utterance.rate = 1
+          synth.speak(utterance)
+        }
+        synth.addEventListener('voiceschanged', e => {
+          voices = synth.getVoices()
+          if (voices.length > 0) {
+            resolve(speak)
+          }
+        })
+      })
+
+      const launch = async () => {
+        await confetti({
+          particleCount: 200,
+          spread: 120,
+          gravity: .5,
+          origin: {
+            x: .5,
+            y: .8
+          },
+          scalar: 2
+        }),
+        launch()
+      }
+
+      launch()
+
+      speak('Hello Desmond! Happy Birthday From Uncle Trevor!')
+
+
+      const a = document.querySelector('a')
+      a.addEventListener('click', e => {
+        speak('Hello Desmond! Happy Birthday From Uncle Trevor!')
+      })
+
+    </script>
+  </body>
+</html>
