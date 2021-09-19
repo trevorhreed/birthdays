@@ -7,7 +7,7 @@
         padding: 0;
       }
       html,body{
-        background: #357;
+        background: #135;
         color: #f84;
         height: 100%;
       }
@@ -20,7 +20,7 @@
       }
       h1{
         text-align: center;
-        font-size: 20vh;
+        font-size: 20vmin;
       }
       a{
         color: red;
@@ -32,7 +32,6 @@
     <a href="javascript:void(0)">Replay</a>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script type="module">
-      console.clear()
 
       const speak = await new Promise((resolve, reject) => {
         const synth = window.speechSynthesis
@@ -69,7 +68,6 @@
       launch()
 
       speak('Hello Desmond! Happy Birthday From Uncle Trevor!')
-
 
       const a = document.querySelector('a')
       a.addEventListener('click', e => {
